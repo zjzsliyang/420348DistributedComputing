@@ -14,9 +14,9 @@ scp -i $5 $1@$2:$4-hw1-q1.log ./$4-hw1-q1.log
 # use password
 # ssh $1@$2 "/bin/bash $3/$4-hw1-q1.sh"
 # scp ./$4-hw1-q1.log $1@$2:$4-hw1-q1.log
-b_start_time=$(ls -lrt | grep $4-hw1-q1.log | tr -s ' ' | cut -d ' ' -f 6-8)
-a_start_time=$(ls -lrt | grep 1452669-hw1-q1.log | tr -s ' ' | cut -d ' ' -f 6-8)
-b_start_time_stamp=$(date +%s -d "$b_start_time")
-a_start_time_stamp=$(date +%s -d "$a_start_time")
-interval_time=$(($b_start_time_stamp - $a_start_time_stamp))
+b_time=$(ls -lrt | grep $4-hw1-q1.log | tr -s ' ' | cut -d ' ' -f 6-8)
+a_time=$(ls -lrt | grep 1452669-hw1-q1.log | tr -s ' ' | cut -d ' ' -f 6-8)
+b_time_stamp=$(date +%s -d "$b_time")
+a_time_stamp=$(date +%s -d "$a_time")
+interval_time=$(($b_time_stamp - $a_time_stamp))
 echo $interval_time >>$log
