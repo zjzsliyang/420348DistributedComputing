@@ -2,6 +2,8 @@
 log="./1452669-hw1-q2.log"
 exec 2>>$log
 
+# $1: 1452669-hw1-q1.log
+
 cat $1 | wc -l >>$log
 
 start_time=$(awk '(NR==1) {print $1}' $1)
