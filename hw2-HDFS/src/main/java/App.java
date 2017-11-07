@@ -16,7 +16,7 @@ public class App {
 
   public static void dataGeneration() {
     try {
-      Producer.producer(range, times, fileName);
+      Producer.producer(range, times, producerFileName);
     } catch (FileNotFoundException e) {
       e.printStackTrace();
     } catch (UnsupportedEncodingException e) {
