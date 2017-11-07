@@ -1,0 +1,10 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="ProjectModuleManager">
+    <modules>
+      <module fileurl="file://$PROJECT_DIR$/hw2-HDFS.iml" filepath="$PROJECT_DIR$/hw2-HDFS.iml" />
+      <module fileurl="file://$PROJECT_DIR$/.idea/modules/hw2-HDFS_main.iml" filepath="$PROJECT_DIR$/.idea/modules/hw2-HDFS_main.iml" group="hw2-HDFS" />
+      <module fileurl="file://$PROJECT_DIR$/.idea/modules/hw2-HDFS_test.iml" filepath="$PROJECT_DIR$/.idea/modules/hw2-HDFS_test.iml" group="hw2-HDFS" />
+    </modules>
+  </component>
+</project>
