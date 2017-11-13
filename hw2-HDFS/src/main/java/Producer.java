@@ -1,18 +1,17 @@
-import java.io.File;
+import java.io.FileInputStream;
 import java.io.FileNotFoundException;
 import java.io.IOException;
 import java.io.RandomAccessFile;
-import java.nio.ByteBuffer;
-import java.nio.CharBuffer;
 import java.nio.IntBuffer;
 import java.nio.channels.FileChannel;
 import java.nio.channels.FileChannel.MapMode;
 
 public class Producer implements Runnable {
+
   private static final String OUTPUT_PATH = "data_generation.txt";
   private static final int MAX_NUM = 2014 * 512;
   private static final short TIMES = 256;
-  private static final int TOTAL = 2014 * 512 * 256;
+  private static final int TOTAL = MAX_NUM * TIMES;
 
   @Override
   public void run() {
@@ -26,7 +25,7 @@ public class Producer implements Runnable {
       fo = os.getChannel();
       try {
         IntBuffer oIb = fo.map(MapMode.READ_WRITE, 0, TOTAL * 1000).asIntBuffer();
-        for (int i = 0; i < MAX_NUM; i++) {
+        for (int i = 1; i <= MAX_NUM; i++) {
           for (int j = 0; j < TIMES; j++) {
             oIb.put(i);
           }
