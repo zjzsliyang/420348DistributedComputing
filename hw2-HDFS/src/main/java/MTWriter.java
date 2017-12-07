@@ -132,6 +132,7 @@ public class MTWriter {
 
   public void writeFromMemory(int threadNo, int[] data) {
     this.data = data;
+    this.threadNo = threadNo;
 
     MTWriter writer = new MTWriter();
     for (int currentNo = 0; currentNo < threadNo; currentNo++) {

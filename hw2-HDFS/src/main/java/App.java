@@ -35,12 +35,21 @@ public class App {
   }
 
   public static void problemIII() {
+/**  Strategy 1
+ *
+ */
+    int[] data = new Producer().produceInMemory();
+    new CAWriter().writeFromMemry(4, data);
+
+/**  Strategy 2
+ *
+ */
 
   }
 
   public static void main(String[] args) {
-//    problemI();
+    problemI();
     problemII();
-    problemIII();
+//    problemIII();
   }
 }

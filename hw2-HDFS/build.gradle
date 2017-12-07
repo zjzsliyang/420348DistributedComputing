@@ -20,6 +20,9 @@ repositories {
 }
 
 dependencies {
+    // https://mvnrepository.com/artifact/org.apache.cassandra/cassandra-all
+    compile group: 'org.apache.cassandra', name: 'cassandra-all', version: '3.11.1'
+
     // https://mvnrepository.com/artifact/org.apache.hadoop/hadoop-client
     compile group: 'org.apache.hadoop', name: 'hadoop-client', version: '2.9.0'
 
@@ -33,3 +36,12 @@ dependencies {
 // Define the main class for the application
 mainClassName = 'App'
 
+jar {
+    manifest {
+        attributes "Main-Class": "$mainClassName"
+    }
+
+    from {
+        configurations.compile.collect { it.isDirectory() ? it : zipTree(it) }
+    }
+}
