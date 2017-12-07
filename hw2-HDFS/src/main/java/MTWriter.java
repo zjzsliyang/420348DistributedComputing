@@ -1,4 +1,3 @@
-import java.io.File;
 import java.io.FileInputStream;
 import java.io.FileNotFoundException;
 import java.io.IOException;
@@ -6,7 +5,6 @@ import java.io.RandomAccessFile;
 import java.nio.IntBuffer;
 import java.nio.channels.FileChannel;
 import java.nio.channels.FileChannel.MapMode;
-import javax.print.attribute.standard.RequestingUserName;
 
 public class MTWriter {
 
@@ -104,7 +102,7 @@ public class MTWriter {
         try {
           IntBuffer iIb = fi.map(MapMode.READ_ONLY, TOTAL * 4 / threadNo * currentNo, TOTAL * 4 / threadNo).asIntBuffer();
           IntBuffer oIb = fo.map(MapMode.READ_WRITE, TOTAL * 4 / threadNo * currentNo, TOTAL * 4 / threadNo).asIntBuffer();
-          int[] tmp = new int[TOTAL * 4 / threadNo];
+          int[] tmp = new int[TOTAL / threadNo];
           while (iIb.hasRemaining()) {
             int read = iIb.get();
             oIb.put(read);
@@ -133,7 +131,6 @@ public class MTWriter {
 
 
   public void writeFromMemory(int threadNo, int[] data) {
-    this.threadNo = threadNo;
     this.data = data;
 
     MTWriter writer = new MTWriter();

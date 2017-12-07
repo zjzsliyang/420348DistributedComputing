@@ -7,22 +7,31 @@ public class App {
  *  @data store data in memory with this position.
  */
     int[] data = new Producer().produceInMemory();
-    new MTWriter().writeFromMemory(5, data);
+    new MTWriter().writeFromMemory(4, data);
 
 /**  Strategy 2
  *  @output store data in disk with "data_generation.txt".
  */
     String output = new Producer().produceInDisk();
-    new MTWriter().writeFromDisk(5);
+    new MTWriter().writeFromDisk(4);
 
 /**  Strategy 3
  *  multi-thread produce and write.
  */
-    new MTWriter().produceWhileWrite(5);
+    new MTWriter().produceWhileWrite(4);
   }
 
   public static void problemII() {
+/**  Strategy 1
+ *
+ */
+    int[] data = new Producer().produceInMemory();
+    new HDWriter().writeFromMemory(4, data);
 
+/**  Strategy 2
+ *
+ */
+    new HDWriter().writeFromDisk(4);
   }
 
   public static void problemIII() {
@@ -30,7 +39,7 @@ public class App {
   }
 
   public static void main(String[] args) {
-    problemI();
+//    problemI();
     problemII();
     problemIII();
   }

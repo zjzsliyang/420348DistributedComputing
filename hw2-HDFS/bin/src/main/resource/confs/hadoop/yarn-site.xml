@@ -1,0 +1,189 @@
+<?xml version="1.0"?>
+<!--
+  Licensed under the Apache License, Version 2.0 (the "License");
+  you may not use this file except in compliance with the License.
+  You may obtain a copy of the License at
+
+    http://www.apache.org/licenses/LICENSE-2.0
+
+  Unless required by applicable law or agreed to in writing, software
+  distributed under the License is distributed on an "AS IS" BASIS,
+  WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+  See the License for the specific language governing permissions and
+  limitations under the License. See accompanying LICENSE file.
+-->
+
+<configuration>
+
+	<!-- #################### -->
+	<!-- resourcemanager -->
+
+	<!-- resourcemanager的地址 -->
+	<property>
+		<name>yarn.resourcemanager.hostname</name>
+		<value>tongji01</value>
+	</property>
+	<!-- default: 0.0.0.0:8032 -->
+	<property>
+		<name>yarn.resourcemanager.address</name>
+		<value>tongji01:4023</value>
+	</property>
+	<!-- 调度器的端口 -->
+	<!-- default: 0.0.0.0:8030 -->
+	<property>
+		<name>yarn.resourcemanager.scheduler.address</name>
+		<value>tongji01:4024</value>
+	</property>
+	<!-- resource-tracker端口 -->
+	<!-- default: 0.0.0.0:8031 -->
+	<property>
+		<name>yarn.resourcemanager.resource-tracker.address</name>
+		<value>tongji01:4025</value>
+	</property>
+	<!-- resourcemanager管理器端口 -->
+	<!-- default: 0.0.0.0:8033 -->
+	<property>
+		<name>yarn.resourcemanager.admin.address</name>
+		<value>tongji01:4026</value>
+	</property>
+	<!-- ResourceManager 的 Web 端口，监控 job 的资源调度 -->
+	<!-- default: 0.0.0.0:8088 -->
+	<property>
+		<name>yarn.resourcemanager.webapp.address</name>
+		<value>tongji01:4027</value>
+	</property>
+	<!-- default: 0.0.0.0:8090 -->
+	<property>
+		<name>yarn.resourcemanager.webapp.https.address</name>
+		<value>tongji01:4028</value>
+	</property>
+
+
+	<!-- #################### -->
+	<!-- nodemanager -->
+
+	<property>
+		<name>yarn.nodemanager.aux-services</name>
+		<value>mapreduce_shuffle</value>
+	</property>
+	<property>
+		<name>yarn.nodemanager.aux-services.mapreduce.shuffle.class</name>
+		<value>org.apache.hadoop.mapred.ShuffleHandler</value>
+	</property>
+
+	<!-- default: 0.0.0.0:0 -->
+	<property>
+		<name>yarn.nodemanager.address</name>
+		<value>0.0.0.0:4029</value>
+	</property>
+
+	<!-- default: 0.0.0.0:8040 -->
+	<property>
+		<name>yarn.nodemanager.localizer.address</name>
+		<value>0.0.0.0:4030</value>
+	</property>
+
+	<!-- default: 0.0.0.0:8048 -->
+	<property>
+		<name>yarn.nodemanager.collector-service.address</name>
+		<value>0.0.0.0:4031</value>
+	</property>
+
+	<!-- default: 0.0.0.0:8042 -->
+	<property>
+		<name>yarn.nodemanager.webapp.address</name>
+		<value>0.0.0.0:4032</value>
+	</property>
+
+	<!-- default: 0.0.0.0:8044 -->
+	<property>
+		<name>yarn.nodemanager.webapp.https.address</name>
+		<value>0.0.0.0:4033</value>
+	</property>
+
+	<!-- #################### -->
+	<!-- #################### -->
+
+	<!-- 从4300端口开始 -->
+	<!-- default: 0.0.0.0:10200 -->
+	<property>
+		<name>yarn.timeline-service.address</name>
+		<value>0.0.0.0:4300</value>
+	</property>
+
+	<!-- default: 0.0.0.0:8188 -->
+	<property>
+		<name>yarn.timeline-service.webapp.address</name>
+		<value>0.0.0.0:4301</value>
+	</property>
+
+	<!-- default: 0.0.0.0:8190 -->
+	<property>
+		<name>yarn.timeline-service.webapp.https.address</name>
+		<value>0.0.0.0:4302</value>
+	</property>
+
+	<!-- default: 0.0.0.0:8047 -->
+	<property>
+		<name>yarn.sharedcache.admin.address</name>
+		<value>0.0.0.0:4303</value>
+	</property>
+
+	<!-- default: 0.0.0.0:8788 -->
+	<property>
+		<name>yarn.sharedcache.webapp.address</name>
+		<value>0.0.0.0:4304</value>
+	</property>
+
+	<!-- default: 0.0.0.0:8046 -->
+	<property>
+		<name>yarn.sharedcache.uploader.server.address</name>
+		<value>0.0.0.0:4305</value>
+	</property>
+
+	<!-- default: 0.0.0.0:8045 -->
+	<property>
+		<name>yarn.sharedcache.client-server.address</name>
+		<value>0.0.0.0:4306</value>
+	</property>
+
+
+	<!-- default: 0.0.0.0:8049 -->
+	<property>
+		<name>yarn.nodemanager.amrmproxy.address</name>
+		<value>0.0.0.0:4307</value>
+	</property>
+
+
+	<!-- default: 0.0.0.0:8089 -->
+	<property>
+		<name>yarn.router.webapp.address</name>
+		<value>0.0.0.0:4308</value>
+	</property>
+
+	<!-- default: 0.0.0.0:8091 -->
+	<property>
+		<name>yarn.router.webapp.https.address</name>
+		<value>0.0.0.0:4309</value>
+	</property>
+
+
+
+	<!-- <property>
+     		<name>yarn.application.classpath</name>
+     		<value>
+     			/usr/local/hadoop/etc/hadoop,
+			/usr/local/hadoop/share/hadoop/common/*,
+			/usr/local/hadoop/share/hadoop/common/lib/*,
+			/usr/local/hadoop/share/hadoop/hdfs/*,
+			/usr/local/hadoop/share/hadoop/hdfs/lib/*,
+			/usr/local/hadoop/share/hadoop/mapreduce/*,
+			/usr/local/hadoop/share/hadoop/mapreduce/lib/*,
+			/usr/local/hadoop/share/hadoop/httpfs/*,
+			/usr/local/hadoop/share/hadoop/httpfs/tomcat/lib/*,
+			/usr/local/hadoop/share/hadoop/yarn/*,
+			/usr/local/hadoop/share/hadoop/yarn/lib/*
+     		</value>
+	</property> -->
+
+</configuration>
