@@ -21,6 +21,8 @@ public class App {
     new MTWriter().produceWhileWrite(4);
   }
 
+
+
   public static void problemII() {
 /**  Strategy 1
  *
@@ -33,6 +35,8 @@ public class App {
  */
     new HDWriter().writeFromDisk(4);
   }
+
+
 
   public static void problemIII() {
 /**  Strategy 1
@@ -50,6 +54,6 @@ public class App {
   public static void main(String[] args) {
     problemI();
     problemII();
-//    problemIII();
+    problemIII();
   }
 }

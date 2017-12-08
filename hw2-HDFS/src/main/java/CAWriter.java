@@ -1,10 +1,8 @@
 import java.nio.ByteBuffer;
 import org.apache.cassandra.thrift.Cassandra;
 import org.apache.cassandra.thrift.Column;
-import org.apache.cassandra.thrift.Cassandra.Client;
 import org.apache.cassandra.thrift.ColumnParent;
 import org.apache.cassandra.thrift.ConsistencyLevel;
-import org.apache.cassandra.thrift.ColumnPath;
 import org.apache.thrift.TException;
 import org.apache.thrift.protocol.TBinaryProtocol;
 import org.apache.thrift.transport.TFramedTransport;
@@ -60,7 +58,7 @@ public class CAWriter {
       ColumnParent parent = new ColumnParent("thread_" + currentNo);
       long timestamp = System.currentTimeMillis();
       try {
-        Column nameColumn = new Column(toByteBuffer("interger"));
+        Column nameColumn = new Column(toByteBuffer("integer"));
         for (int i = MAX_NUM / threadNo; i < MAX_NUM / threadNo; i++) {
           for (int j = 0; j < TIMES; j++) {
             nameColumn.setValue(intToByteArray(data[i+j]));

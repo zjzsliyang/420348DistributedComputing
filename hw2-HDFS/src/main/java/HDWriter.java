@@ -50,7 +50,7 @@ public class HDWriter {
 
       FSDataOutputStream output= null;
       try {
-        output = fs.create(new Path(OUTPUT_PATH + "/writeFromMemory" + currentNo));
+        output = fs.create(new Path("writeFromMemory" + currentNo));
         for (int i = MAX_NUM / threadNo; i < MAX_NUM / threadNo; i++) {
           for (int j = 0; j < TIMES; j++) {
             output.write(intToByteArray(data[i+j]));
@@ -110,8 +110,8 @@ public class HDWriter {
       FSDataInputStream input = null;
       FSDataOutputStream output= null;
       try {
-        output = fs.create(new Path(OUTPUT_PATH + "/writeFromDisk" + currentNo));
-        input = fs.open(new Path(OUTPUT_PATH + "/writeFromMemory" + currentNo));
+        output = fs.create(new Path("writeFromDisk" + currentNo));
+        input = fs.open(new Path("writeFromMemory" + currentNo));
 
         while ((bytesRead = input.read(buffer)) > 0 ) {
           output.write(buffer, 0, bytesRead);
