@@ -10,7 +10,7 @@ public class HDWriter {
   private static final int MAX_NUM = 2014 * 512;
   private static final short TIMES = 256;
   private static final int TOTAL = MAX_NUM * TIMES;
-  private static final String OUTPUT_PATH = "hdfs://172.17.0.2:8080/user/user06";
+  private static final String OUTPUT_PATH = "hdfs://localhost:4000/user/user06";
   private static FileSystem fs = null;
   private static int threadNo = 1;
   private static int[] data;

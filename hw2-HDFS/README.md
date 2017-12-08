@@ -22,7 +22,7 @@ In 4 threads Scenario(unit: *ms*):
 > writeFromMemory Thread_3 costs: 14
 > writeFromMemory Thread_2 costs: 15
 > writeFromMemory Thread_0 costs: 448
-> 
+>
 > produceWhileWrite Thread_1 costs: 1
 > produceWhileWrite Thread_3 costs: 0
 > produceWhileWrite Thread_2 costs: 0
@@ -37,7 +37,16 @@ In 4 threads Scenario(unit: *ms*):
 
 ## Problem II
 
+After packaging the jar and run in the serer, write strategy unchanged, the results are as following graph.
 
+![problem2](res/problem2.png)
+
+Since HDFS does not support random write, and thinking that multi-thread's function, so I have to use multi-thread to write file into many parts like map. And transfer almost 1G data costs to much, so I run in the server.
 
 ## Problem III
 
+![problem3](res/problem3.png)
+
+Since my strategy is same in three problem, so the memory costs and disk costs are simple, shows below.
+
+![problem](res/problem.png)

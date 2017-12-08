@@ -33,7 +33,7 @@ public class App {
 /**  Strategy 2
  *
  */
-    new HDWriter().writeFromDisk(4);
+//    new HDWriter().writeFromDisk(4);
   }
 
 
@@ -52,8 +52,8 @@ public class App {
   }
 
   public static void main(String[] args) {
-    problemI();
+//    problemI();
     problemII();
-    problemIII();
+//    problemIII();
   }
 }
