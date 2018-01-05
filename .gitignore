@@ -15,6 +15,7 @@
 *.class
 *.xsl
 *.css
+*.cache
 
 *.iml
 *.ipr
