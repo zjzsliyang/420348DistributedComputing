@@ -1,5 +1,17 @@
 */data/*
 
+.DS_Store
+
+
+*/target
+*.class
+
+*.iml
+*.ipr
+*.iws
+.idea
+out
+
 *.log
 *.pdf
 *.txt
