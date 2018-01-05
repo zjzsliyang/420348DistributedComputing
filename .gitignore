@@ -14,6 +14,7 @@
 */.lib/
 *.class
 *.xsl
+*.css
 
 *.iml
 *.ipr
