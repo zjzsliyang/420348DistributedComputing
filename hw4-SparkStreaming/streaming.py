@@ -59,14 +59,15 @@ def main():
         udf(case_insensitive_arrays_contains, BooleanType())
         article = sql.read.format('com.databricks.spark.xml') \
             .options(rowTag='article', excludeAttribute=True, charset='utf-8') \
-            .load('data/dblp_converted.xml', schema=schema)
+            .load('data/dblp_output.xml', schema=schema)
 
         output = []
         if len(input) > 0:
             if input[0].lower().startswith('author: '):
                 # case 1:
                 author = input[0][8:]
-                print(article.rdd.filter(lambda x: case_insensitive_array_contains(author, x['author'])).map(
+                print(article.rdd.filter(lambda x: case_insensitive_array_contains(author, x['author'])).filter(
+                    lambda x: len(x['author']) > 1).map(
                     lambda x: x['title']).collect().__len__())
                 output = article.orderBy(article.year.desc()).rdd.filter(
                     lambda x: case_insensitive_array_contains(author, x['author'])).map(
@@ -77,22 +78,25 @@ def main():
                 # case 2:
                 author = input[0][10:]
                 print(
-                    article.select('author').rdd.filter(lambda x: case_insensitive_array_contains(author, x['author'])).map(
+                    article.select('author').rdd.filter(
+                        lambda x: case_insensitive_array_contains(author, x['author'])).map(
                         lambda x: x['author']).flatMap(lambda x: x).distinct().count() - 1)
                 output = article.select('author').rdd.filter(
                     lambda x: case_insensitive_array_contains(author, x['author'])).map(
                     lambda x: x['author']).flatMap(lambda au: [(x, 1) for x in au]).reduceByKey(add).sortBy(
                     lambda x: -x[1]).collect()
-                output.pop(0)
                 for item in output:
-                    print(item)
+                    if author.lower() not in item[0].lower():
+                        print(item)
 
             elif input[0].lower().startswith('clique: '):
                 # case 3:
                 author = re.split(',[ ]*', re.split('[\[\]]', input[0])[0][8:])
                 no = int(re.split('[\[\]]', input[0])[-2])
-                print('YES' if article.rdd.filter(lambda x: case_insensitive_arrays_contains(author, x['author'])).count() >= no else 'NO')
-                output = article.rdd.filter(lambda x: case_insensitive_arrays_contains(author, x['author'])).map(lambda x: [x[i] for i in ['title', 'author', 'year']]).collect()
+                print('YES' if article.rdd.filter(
+                    lambda x: case_insensitive_arrays_contains(author, x['author'])).count() >= no else 'NO')
+                output = article.rdd.filter(lambda x: case_insensitive_arrays_contains(author, x['author'])).map(
+                    lambda x: [x[i] for i in ['title', 'author', 'year']]).collect()
                 for item in output:
                     print(item)
             else:
