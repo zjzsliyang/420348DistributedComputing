@@ -3,8 +3,8 @@ import org.apache.commons.lang.StringEscapeUtils
 
 object Cleansing {
   def main(args: Array[String]): Unit = {
-    val inputFile = "data/books.xml"
-    val outputFile = "data/books_output.xml"
+    val inputFile = "data/dblp.xml"
+    val outputFile = "data/dblp_output.xml"
 
     val fr = new FileReader(inputFile)
     var fw = new FileWriter(outputFile)
@@ -17,6 +17,11 @@ object Cleansing {
       var newLine = line.replace("inproceedings", "article")
         .replace("<www", "<article")
         .replace("/www", "/article")
+        .replace("proceedings", "article")
+        .replace("book", "article")
+        .replace("incollection", "article")
+        .replace("phdthesis", "article")
+        .replace("mastersthesis", "article")
       bw.write(StringEscapeUtils.unescapeHtml(newLine) + "\n")
       line = br.readLine()
       println(no)

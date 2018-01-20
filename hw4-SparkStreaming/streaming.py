@@ -57,9 +57,11 @@ def main():
 
         udf(case_insensitive_array_contains, BooleanType())
         udf(case_insensitive_arrays_contains, BooleanType())
-        article = sql.read.format('com.databricks.spark.xml') \
-            .options(rowTag='article', excludeAttribute=True, charset='utf-8') \
-            .load('data/dblp_output.xml', schema=schema)
+        # article = sql.read.format('com.databricks.spark.xml') \
+        #     .options(rowTag='article', excludeAttribute=True, charset='utf-8') \
+        #     .load('data/dblp_output.xml', schema=schema)
+        # article.write.parquet('article')
+        article = sql.read.parquet('article')
 
         output = []
         if len(input) > 0:
